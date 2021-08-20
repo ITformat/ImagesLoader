@@ -2,7 +2,7 @@
 
 <!--version-->
 
-[ImagesLoader](https://github.com/itformat/imagesloader/) is a modular money picker plugin for Bootstrap.
+[ImagesLoader](https://github.com/itformat/imagesloader/) is a modular images loader plugin for Bootstrap.
 
 ## Live Demo
 See live at https://www.format.it/demo/imagesloader
