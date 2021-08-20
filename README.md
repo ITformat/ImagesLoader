@@ -17,7 +17,7 @@ See live at https://www.format.it/demo/imagesloader
 
 ## Versions
 
-First release 1.0.0
+First release 1.0.1
 
 Dependecies:
   - Jquery v3.5.1
