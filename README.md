@@ -66,20 +66,16 @@ Dependecies:
       </div>
 
       <!--Image container -->
-      <div class="row"
-           data-type="imagesloader"
-           data-errorformat="Accepted file formats"
-           data-errorsize="Maximum size accepted"
-           data-errorduplicate="File already loaded"
-           data-errormaxfiles="Maximum number of images you can upload"
-           data-errorminfiles="Minimum number of images to upload"
-           data-modifyimagetext="Modify immage"
-           data-maxFiles="4">
+      <div class="row" data-type="imagesloader" 
+           data-errorformat="Accepted file formats" data-errorsize="Maximum size accepted" data-errorduplicate="File already loaded" 
+           data-errormaxfiles="Maximum number of images you can upload" data-errorminfiles="Minimum number of images to upload" 
+           data-modifyimagetext="Modify immage" data-maxFiles="4">
 
         <!-- Progress bar -->
         <div class="col-12 order-1 mt-2">
           <div data-type="progress" class="progress" style="height: 25px; display:none;">
-            <div data-type="progressBar" class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" style="width: 100%;">Load in progress...</div>
+            <div data-type="progressBar" 
+                 class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" style="width: 100%;">Load in progress...</div>
           </div>
         </div>
 
@@ -117,15 +113,18 @@ Dependecies:
                 <button data-operation="left" class="btn btn-block btn-outline-success btn-sm rounded-pill" type="button"><span class="fa fa-angle-left mr-2"></span>Left</button>
               </div>
               <div class="col-6 p-0 pl-1">
-                <button data-operation="right" class="btn btn-block btn-outline-success btn-sm rounded-pill" type="button">Right<span class="fa fa-angle-right ml-2"></span></button>
+                <button data-operation="right" 
+                        class="btn btn-block btn-outline-success btn-sm rounded-pill" type="button">Right<span class="fa fa-angle-right ml-2"></span></button>
               </div>
             </div>
             <div class="row mt-2">
               <div class="col-6 p-0 pr-1">
-                <button data-operation="rotateanticlockwise" class="btn btn-block btn-outline-success btn-sm rounded-pill" type="button"><span class="fas fa-undo-alt mr-2"></span>Rotate</button>
+                <button data-operation="rotateanticlockwise" 
+                        class="btn btn-block btn-outline-success btn-sm rounded-pill" type="button"><span class="fas fa-undo-alt mr-2"></span>Rotate</button>
               </div>
               <div class="col-6 p-0 pl-1">
-                <button data-operation="rotateclockwise" class="btn btn-block btn-outline-success btn-sm rounded-pill" type="button">Rotate<span class="fas fa-redo-alt ml-2"></span></button>
+                <button data-operation="rotateclockwise" 
+                        class="btn btn-block btn-outline-success btn-sm rounded-pill" type="button">Rotate<span class="fas fa-redo-alt ml-2"></span></button>
               </div>
             </div>
             <div class="row mt-2">
