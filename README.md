@@ -26,7 +26,6 @@ Dependecies:
 ## Example
 
 ```html
-
 <html>
 <head>
   <title>Format ImagesLoader</title>
@@ -66,16 +65,19 @@ Dependecies:
       </div>
 
       <!--Image container -->
-      <div class="row" data-type="imagesloader" 
-           data-errorformat="Accepted file formats" data-errorsize="Maximum size accepted" data-errorduplicate="File already loaded" 
-           data-errormaxfiles="Maximum number of images you can upload" data-errorminfiles="Minimum number of images to upload" 
-           data-modifyimagetext="Modify immage" data-maxFiles="4">
+      <div class="row"
+           data-type="imagesloader"
+           data-errorformat="Accepted file formats"
+           data-errorsize="Maximum size accepted"
+           data-errorduplicate="File already loaded"
+           data-errormaxfiles="Maximum number of images you can upload"
+           data-errorminfiles="Minimum number of images to upload"
+           data-modifyimagetext="Modify immage">
 
         <!-- Progress bar -->
         <div class="col-12 order-1 mt-2">
           <div data-type="progress" class="progress" style="height: 25px; display:none;">
-            <div data-type="progressBar" 
-                 class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" style="width: 100%;">Load in progress...</div>
+            <div data-type="progressBar" class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" style="width: 100%;">Load in progress...</div>
           </div>
         </div>
 
@@ -113,18 +115,15 @@ Dependecies:
                 <button data-operation="left" class="btn btn-block btn-outline-success btn-sm rounded-pill" type="button"><span class="fa fa-angle-left mr-2"></span>Left</button>
               </div>
               <div class="col-6 p-0 pl-1">
-                <button data-operation="right" 
-                        class="btn btn-block btn-outline-success btn-sm rounded-pill" type="button">Right<span class="fa fa-angle-right ml-2"></span></button>
+                <button data-operation="right" class="btn btn-block btn-outline-success btn-sm rounded-pill" type="button">Right<span class="fa fa-angle-right ml-2"></span></button>
               </div>
             </div>
             <div class="row mt-2">
               <div class="col-6 p-0 pr-1">
-                <button data-operation="rotateanticlockwise" 
-                        class="btn btn-block btn-outline-success btn-sm rounded-pill" type="button"><span class="fas fa-undo-alt mr-2"></span>Rotate</button>
+                <button data-operation="rotateanticlockwise" class="btn btn-block btn-outline-success btn-sm rounded-pill" type="button"><span class="fas fa-undo-alt mr-2"></span>Rotate</button>
               </div>
               <div class="col-6 p-0 pl-1">
-                <button data-operation="rotateclockwise" 
-                        class="btn btn-block btn-outline-success btn-sm rounded-pill" type="button">Rotate<span class="fas fa-redo-alt ml-2"></span></button>
+                <button data-operation="rotateclockwise" class="btn btn-block btn-outline-success btn-sm rounded-pill" type="button">Rotate<span class="fas fa-redo-alt ml-2"></span></button>
               </div>
             </div>
             <div class="row mt-2">
@@ -154,24 +153,20 @@ Dependecies:
 
   </div>
 
-  <div class="container col-4 pt-5 text-center">
-    <label class="col-form-label text-nowrap"><italic>*Thanks to all everybody that will support this project.*</italic></label>
-    <form action="https://www.paypal.com/donate" method="post" target="_top">
-      <input type="hidden" name="hosted_button_id" value="FDL9PF2E2MGF8" />
-      <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
-      <img alt="" border="0" src="https://www.paypal.com/en_IT/i/scr/pixel.gif" width="1" height="1" />
-    </form>
-  </div>
-
   <!-- Custom javascript -->
   <script type="text/javascript">
+
     // Ready
     $(document).ready(function () {
 
+      //Image loader var to use when you need a function from object
+      var auctionImages = [{"Url":"./img/Nespresso001.jpg","Name":"Nespresso001"},{"Url":"./img/Nespresso002.jpg","Name":"Nespresso002"}];
+
       // Create image loader plugin
       var imagesloader = $('[data-type=imagesloader]').imagesloader({
-        minSelect: 3
-       ,imagesToLoad: [{"Url":"./img/Nespresso001.jpg","Name":"Nespresso001"},{"Url":"./img/Nespresso002.jpg","Name":"Nespresso002"}]
+        maxFiles: 4
+        , minSelect: 1
+        , imagesToLoad: auctionImages
       });
 
       //Form
@@ -183,6 +178,7 @@ Dependecies:
         var $form = $(this);
 
         var files = imagesloader.data('format.imagesloader').AttachmentArray;
+
         var il = imagesloader.data('format.imagesloader');
 
         if (il.CheckValidity())
@@ -193,7 +189,9 @@ Dependecies:
       });
 
     });
+
   </script>
+
 </body>
 </html>
 ```
