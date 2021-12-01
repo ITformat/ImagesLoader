@@ -26,7 +26,7 @@
 
   <div class="container col-8 pt-5">
 
-    <form id="frm" method="post" class="needs-validation" novalidate="">
+    <form id="frm" method="post" class="needs-validation" novalidate="" enctype="multipart/form-data">
 
       <!--Image Upload-->
       <div class="row mt-3 mb-2">
@@ -136,7 +136,7 @@
 
       // Create image loader plugin
       var imagesloader = $('[data-type=imagesloader]').imagesloader({
-        maxFiles: 4
+        maxFiles: 16
         , minSelect: 1
         , imagesToLoad: auctionImages
       });
@@ -153,8 +153,21 @@
 
         var il = imagesloader.data('format.imagesloader');
 
-        if (il.CheckValidity())
-          alert('Upload ' + files.length + ' files');        
+        if (il.CheckValidity()){
+          $.ajax({
+            url: 'save.php',
+            type: 'POST',
+            data: JSON.stringify(files),
+            success: function (response) {
+              response = $.parseJSON(response);
+              if(response.status == 'completed'){
+                alert('Upload ' + files.length + ' files, Completed');
+              } else {
+                alert('Upload failed'); 
+              }
+            }
+          })
+        }       
 
         e.preventDefault();
         e.stopPropagation();
