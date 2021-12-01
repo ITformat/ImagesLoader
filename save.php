@@ -6,54 +6,24 @@ $json = file_get_contents('php://input');
 
 $data = json_decode($json);
 
-$i = 0;
-
-foreach($data AS $key => $val){
+for($i = 0; $i <= 15; $i++){
     // Set new name image file
-    $explode_filename = explode('.', $val->FileName);
-    $new_filename = current($explode_filename).'_'.date('YmdHis').'.'.end($explode_filename);
+    if(!empty($data[$i]->FileName)){
+        $explode_filename = explode('.', $data[$i]->FileName);
+        $new_filename = current($explode_filename).'_'.date('YmdHis').'.'.end($explode_filename);
+        
+        // Upload file from Base64
+        file_put_contents('img/upload/'.$new_filename, base64_decode($data[$i]->Base64));
+    } else {
+        $new_filename = NULL;
+    }
 
-    // Upload file from Base64
-    file_put_contents('img/upload/'.$new_filename, base64_decode($val->Base64));
-
-    $arraydata["imagename"][$i] =  $new_filename;
-    $i++;
+    $arraydata["imagename"][] = $new_filename;
 }
+
 // Insert image name to DB
-$insert = $connect->prepare( 
-    "INSERT INTO (
-        image1,
-        image3,
-        image4,
-        image5,
-        image6,
-        image7,
-        image8,
-        image9,
-        image10,
-        image11,
-        image12,
-        image13,
-        image14,
-        image15,
-        image16)
-    VALUES (
-        :image1,
-        :image3,
-        :image4,
-        :image5,
-        :image6,
-        :image7,
-        :image8,
-        :image9,
-        :image10,
-        :image11,
-        :image12,
-        :image13,
-        :image14,
-        :image15,
-        :image16)"
-);
+$insert = $connect->prepare("INSERT INTO imageupload (image1,image2,image3,image4,image5,image6,image7,image8,image9,image10,image11,image12,image13,image14,image15,image16)
+    VALUES (:image1,:image2,:image3,:image4,:image5,:image6,:image7,:image8,:image9,:image10,:image11,:image12,:image13,:image14,:image15,:image16)");
 $insert->execute(
     array(
         ":image1" => $arraydata["imagename"][0],
@@ -71,8 +41,8 @@ $insert->execute(
         ":image13" => $arraydata["imagename"][12],
         ":image14" => $arraydata["imagename"][13],
         ":image15" => $arraydata["imagename"][14],
-        ":image16" => $arraydata["imagename"][15],
-
-    );
+        ":image16" => $arraydata["imagename"][15]
+    )
 );
+
 echo json_encode( array('status' => 'completed') );
